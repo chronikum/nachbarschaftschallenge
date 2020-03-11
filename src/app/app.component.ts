@@ -11,14 +11,29 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 })
 export class AppComponent {
   faShare = faShareAlt
-  options: FormGroup;
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto');
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
-    });
+  /**
+   * flags to determine if user wants or needs help
+   */
+  needsHelp: boolean;
+  wantsHelp: boolean;
+
+  constructor() {
+
+  }
+
+  /**
+   * user wants to help
+   */
+  wantHelp() {
+    this.wantsHelp = true;
+  }
+
+
+  /**
+   * user needs help
+   */
+  needHelp() {
+    this.needsHelp = true;
   }
 }
