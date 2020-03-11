@@ -1,1 +1,29 @@
+<div>
+<mat-toolbar color="primary" class="container-fluid">
+  <span>Gemeinsam gegen die Panik!</span>
 
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <fa-icon class="example-icon" [icon]="faShare"></fa-icon>
+</mat-toolbar>
+<div>
+<mat-card>
+  <div class="container-fluid">
+  </div>
+  <div class="example-container">
+    <form [formGroup]="options" class="container-fluid row" style="text-align:center">
+      <mat-label class="col-xs-12">Diese Seite soll Ihnen helfen, gegebenenfalls Unterstützung zu finden. Wenn Sie Unterstützung leisten wollen, klicken Sie hier:</mat-label>
+      <br>
+      <div class="col-xs-12" style="text-align:center">
+        <button mat-raised-button color="primary">Ich will helfen!</button>
+      </div>
+      <br>
+      <mat-label class="col-xs-12">Wenn Sie Hilfe und Unterstützung benötigen, klicken Sie hier.</mat-label>
+      <div class="col-xs-12" style="text-align:center">
+        <button mat-raised-button color="warn">Ich brauche Hilfe!</button>
+      </div>
+    </form>
+  </div>
+</mat-card>
+</div>
