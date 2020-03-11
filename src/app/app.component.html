@@ -11,7 +11,7 @@
 <mat-card>
   <div class="container-fluid">
   </div>
-  <div class="buttonHolder" *ngIf="!(this.needsHelp || this.wantsHelp)">
+  <div class="buttonHolder" *ngIf="!(this.needsHelp || this.wantsToHelp)">
     <div class="container-fluid row" style="text-align:center">
       <mat-label class="col-xs-12">Diese Seite soll Ihnen helfen, gegebenenfalls Unterstützung zu finden. Wenn Sie Unterstützung leisten wollen, klicken Sie hier:</mat-label>
       <br>
@@ -25,11 +25,30 @@
       </div>
     </div>
   </div>
-  <div *ngIf="this.wantsHelp">
-    <mat-label><b>Ich brauche Hilfe.</b></mat-label>
+  <div *ngIf="(this.needsHelp || this.wantsToHelp)" class="row">
+    <button (click)="resetsHelp()" mat-raised-button color="warn">Zurück!</button>
   </div>
-  <div *ngIf="this.needsHelp">
-    <mat-label><b>Ich kann helfen!</b></mat-label>
+</mat-card>
+<mat-card *ngIf="(this.needsHelp || this.wantsToHelp)">
+<div *ngIf="this.needsHelp" class="container row">
+  <mat-label><b>Ich brauche Hilfe!</b></mat-label>
+  <p>Wenn Sie Hilfe benötigen, tragen Sie hier bitte Ihre Daten ein. Sie werden nach einem Match mit einem Helfenden nochmal gefragt, ob Sie Ihre Daten wirklich teilen möchten. Ihre E-Mail Adresse ist <b>ÖFFENTLICH</b></p>
+  <div class="col-xs-12">
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>PLZ</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail</mat-label>
+      <input matInput>
+    </mat-form-field>
   </div>
+</div>
+</div>
+<div *ngIf="this.wantsToHelp" class="container row">
+  <mat-label><b>Ich will helfen!</b></mat-label>
+</div>
 </mat-card>
 </div>

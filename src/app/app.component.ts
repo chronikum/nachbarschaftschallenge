@@ -16,7 +16,7 @@ export class AppComponent {
    * flags to determine if user wants or needs help
    */
   needsHelp: boolean;
-  wantsHelp: boolean;
+  wantsToHelp: boolean;
 
   constructor() {
 
@@ -26,7 +26,8 @@ export class AppComponent {
    * user wants to help
    */
   wantHelp() {
-    this.wantsHelp = true;
+    this.wantsToHelp = true;
+    this.needsHelp = false;
   }
 
 
@@ -35,5 +36,11 @@ export class AppComponent {
    */
   needHelp() {
     this.needsHelp = true;
+    this.wantsToHelp = false;
+  }
+
+  resetsHelp() {
+    this.needsHelp = false;
+    this.wantsToHelp = false;
   }
 }
