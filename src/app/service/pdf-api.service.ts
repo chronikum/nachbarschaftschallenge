@@ -8,50 +8,69 @@ export class PDFAPIService {
 
   constructor() { }
 
+  /**
+   * Get PDF
+   */
   async getPDF() {
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // tslint:disable: object-literal-key-quotes
     const body = {
-      "template": {
-        "type": "pdf",
-        "documents": [
+      'template': {
+        'type': 'pdf',
+        'documents': [
           {
-            "width": 2480,
-            "height": 3508,
-            "type": "html",
-            "src": "data/templates/corona/doc.html",
-            "alias": "Document"
+            'width': 2480,
+            'height': 3508,
+            'type': 'html',
+            'src': 'data/templates/corona/doc.html',
+            'alias': 'Document'
           }
         ],
-        "fonts": [],
-        "fields": [
+        'fonts': [],
+        'fields': [
           {
-            "type": "Line",
-            "description": "Name",
-            "key": "name",
-            "default": "Hallo Welt",
-            "properties": {}
+            'type': 'Line',
+            'description': 'Name',
+            'key': 'name',
+            'default': 'Hallo Welt',
+            'properties': {}
           }
         ],
-        "doc": 0,
-        "data": {
-          "intro": "Hallo",
-        },
-        "renderings": 1,
-        "delay": 250
-      }
+        'renderings': 1,
+        'delay': 250
+      },
+      'doc': 0,
+      'data': {
+        'intro': 'Hallo',
+        'paragraph1': '',
+        'explanation': '',
+        'paragraph2': '',
+        'name': '',
+      },
     }
     const requestOptions: RequestInit = {
-      method: 'POST',
+      method: 'post',
+      // tslint:disable-next-line: object-literal-shorthand
       headers: headers,
+      mode: 'cors',
       body: JSON.stringify(body),
       redirect: 'follow'
     };
 
-    fetch("https://gegen-den-virus.de:8080/emulate/pdf", requestOptions)
+    const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => this.downloadFile(result))
       .catch(error => console.log('error', error));
+
+
+  }
+
+  /**
+   * File should be offered to download here
+   */
+  downloadFile(data: any) {
+
   }
 }
 
