@@ -22,9 +22,11 @@
       </mat-form-field>
     </div>
   </div>
-<div class="container row">
-  <button mat-button (click)="callIt()"><b>Aushangdokument generieren</b></button>
-  <a [href]="fileUrl" download="file.txt">DownloadFile</a>
+  <div class="container row">
+    <button mat-button (click)="generate()"><b>Aushangdokument generieren</b></button>
+  </div>
+<div class="container row" *ngIf="downloadOkay">
+  <a [href]="fileUrl" download="response.pdf">Download Document</a>
 </div>
 </mat-card>
 </div>

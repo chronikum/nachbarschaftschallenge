@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,7 @@ export class PDFAPIService {
     const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
       .then(response => this.saveAsBlob(response))
       .catch(error => console.log('error', error));
+    return response;
   }
 
   async saveAsBlob(responseData: Response) {
