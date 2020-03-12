@@ -11,10 +11,40 @@ export class PDFAPIService {
   async getPDF() {
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
-
+    const body = {
+      "template": {
+        "type": "pdf",
+        "documents": [
+          {
+            "width": 2480,
+            "height": 3508,
+            "type": "html",
+            "src": "data/templates/corona/doc.html",
+            "alias": "Document"
+          }
+        ],
+        "fonts": [],
+        "fields": [
+          {
+            "type": "Line",
+            "description": "Name",
+            "key": "name",
+            "default": "Hallo Welt",
+            "properties": {}
+          }
+        ],
+        "doc": 0,
+        "data": {
+          "intro": "Hallo",
+        },
+        "renderings": 1,
+        "delay": 250
+      }
+    }
     const requestOptions: RequestInit = {
       method: 'POST',
       headers: headers,
+      body: JSON.stringify(body),
       redirect: 'follow'
     };
 
@@ -24,3 +54,5 @@ export class PDFAPIService {
       .catch(error => console.log('error', error));
   }
 }
+
+
