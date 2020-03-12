@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { PDFAPIService } from './service/pdf-api.service';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,12 +12,14 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  name = 'response.pdf';
+  fileUrl;
   faShare = faShareAlt
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  constructor(fb: FormBuilder, private pdfApiService: PDFAPIService) {
+  constructor(fb: FormBuilder, private pdfApiService: PDFAPIService, private sanitizer: DomSanitizer) {
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
@@ -25,5 +28,12 @@ export class AppComponent {
 
   callIt() {
     this.pdfApiService.getPDF();
+    this.saveAsBlob();
+  }
+  async saveAsBlob() {
+    const data = 'asdad ads asd';
+    const blob = new Blob([data], { type: 'application/pdf' });
+
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
 }

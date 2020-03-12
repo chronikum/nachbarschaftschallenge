@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PDFAPIService {
 
-  constructor() { }
+  name = 'response.pdf';
+  fileUrl;
+
+  constructor(private sanitizer: DomSanitizer) { }
 
   /**
    * Get PDF
@@ -59,18 +63,15 @@ export class PDFAPIService {
     };
 
     const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
-      .then(response => response.text())
-      .then(result => this.downloadFile(result))
+      .then(response => this.saveAsBlob(response))
       .catch(error => console.log('error', error));
-
-
   }
 
-  /**
-   * File should be offered to download here
-   */
-  downloadFile(data: any) {
+  async saveAsBlob(responseData: Response) {
+    const data = 'some text';
+    const blob = new Blob([data], { type: 'application/octet-stream' });
 
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
 }
 
