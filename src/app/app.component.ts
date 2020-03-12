@@ -1,3 +1,4 @@
+import { PDFAPIService } from './service/pdf-api.service';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component } from '@angular/core';
@@ -15,10 +16,14 @@ export class AppComponent {
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private pdfApiService: PDFAPIService) {
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
     });
+  }
+
+  callIt() {
+    this.pdfApiService.getPDF();
   }
 }
