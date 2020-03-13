@@ -1,7 +1,8 @@
+import { PDFAPIService } from './../service/pdf-api.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { PDFAPIService } from '../service/pdf-api.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { saveAs } from 'file-saver';
 
 @Component({
