@@ -49,11 +49,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Template1ComponentComponent } from './template1-component/template1-component.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    Template1ComponentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
