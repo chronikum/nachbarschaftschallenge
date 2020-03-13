@@ -10,17 +10,20 @@
 <div>
 <mat-card>
   <div class="container-fluid">
-    <div class="example-container">
-      <mat-form-field appearance="fill">
-        <mat-label>PLZ</mat-label>
-        <input matInput>
+    <form class="col-xs-12 row" [formGroup]="aushangForm">
+      <mat-form-field class="col-xs-12">
+        <textarea class="answerField" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
       </mat-form-field>
-      <br>
-      <mat-form-field appearance="fill">
-        <mat-label>E-Mail</mat-label>
-        <input matInput>
+      <mat-form-field class="col-xs-12">
+        <textarea class="answerField" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
       </mat-form-field>
-    </div>
+      <mat-form-field class="col-xs-12">
+        <textarea class="answerField" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
+      </mat-form-field>
+      <mat-form-field class="col-xs-12">
+        <textarea class="answerField" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
+      </mat-form-field>
+    </form>
   </div>
   <div class="container row">
     <button mat-button (click)="generate()"><b>Aushangdokument generieren</b></button>

@@ -3,7 +3,7 @@ import { PDFAPIService } from './service/pdf-api.service';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -16,19 +16,28 @@ export class AppComponent {
   name = 'response.pdf';
   fileUrl;
   faShare = faShareAlt;
-  options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
   downloadOkay = false;
+  aushangForm: FormGroup;
 
   constructor(fb: FormBuilder, private pdfApiService: PDFAPIService, private sanitizer: DomSanitizer) {
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
+    this.aushangForm = fb.group({
+      intro: ['', [Validators.required]],
+      paragraph1: ['', [Validators.required]],
+      paragraph2: ['', [Validators.required]],
+      name: ['', [Validators.required]],
     });
   }
 
-  async getPDF() {
+  /**
+   * Generate and serve download for pdf with following parameters
+   * @param intro Einleitung
+   * @param paragraph1 Was ich übernehmen kann:
+   * @param paragraph2 Wie man mich erreichen kann (Adresse und Co)
+   * @param name Name
+   */
+  async getPDF(intro: string, paragraph1: string, paragraph2: string, name: string) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const body = {
@@ -81,10 +90,10 @@ export class AppComponent {
       },
       "doc": 0,
       "data": {
-        "intro": "nicht alle von euch kennen wir: manche flüchtig aus Treppenhausbegegnungen, andere durch kurze Gespräche zwischen Tür und Angel.So nehmen einige von euch öfter unsere Pakete an,sorgen dafür, dass es im Treppenhaus jetzt besser riecht oder ersetzen alte Leuchten durch LEDs.Alles praktische Nachbarschaftshilfe, für die wir sehr dankbar sind und nicht immer im Alltag unseren Dank zum Ausdruck bringen! Vielleicht haben wir uns auch schon mal über einander aufgeregt, weil ihr auf unserem Parkplatz standet oder umgekehrt– Zusammenleben in einem Mietshaus bringt sicher auch das mit sich.",
-        "paragraph1": "In dieser aktuell merkwürdigen und dichten Zeit mit einem neuartigen Virus, der auf vielen verschiedenen Ebenen Chaos verursacht, setzen wir auf SOLIDARITÄT und haben uns überlegt, was das für uns praktisch bedeutet: ",
-        "paragraph2": "Ich wohne im 3. Stock und arbeite tagsüber. Meistens bin ich ab 16 Uhr zu Hause. Gerne einfach klingen oder mich anrufen: <strong>0176 749 32702</strong>",
-        "name": "Familie Yilmaz"
+        "intro": intro,
+        "paragraph1": paragraph1,
+        "paragraph2": paragraph2,
+        "name": name
       },
       "renderings": 1,
       "delay": 250
@@ -103,8 +112,11 @@ export class AppComponent {
       .catch(error => console.log('error', error));
   }
 
+  /**
+   * Generiere eine PDF
+   */
   generate() {
-    this.getPDF();
+    this.getPDF(this.aushangForm.get('intro').value, this.aushangForm.get('paragraph1').value, this.aushangForm.get('paragraph2').value, this.aushangForm.get('name').value);
   }
 
   async saveAsBlob(response: Blob) {
