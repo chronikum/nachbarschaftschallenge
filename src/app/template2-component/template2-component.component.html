@@ -1,29 +1,46 @@
-<mat-card class="row">
-  <div class="container row">
-    <form class="col-xs-12 row" [formGroup]="aushangForm">
-      <mat-label class="container col-xs-12" style="text-align: left;">Liebe Nachbarschaft, liebe Hausgemeinschaft,
-        sollten Sie zu einer der durch die derzeitige Pandemie (Coronavirus SARS CoV 2) betroffenen Risikogruppen gehören (hohes Alter, Immunschwäche oder bestimmte Grunderkrankungen) möchte ich/möchten wir Sie unterstützen gesund zu bleiben. <b>Gemeinsam schaffen wir das!</b></mat-label>
-      <mat-form-field class="col-xs-12">
-        <mat-label class="container col-xs-12" style="text-align: left;">WIR HELFEN MIT:</mat-label>
-        <textarea class="eingabeFeld" formControlName="wirhelfen" matInput placeholder="Womit können Sie helfen? Trennen Sie mit einem Komma."></textarea>
-      </mat-form-field>
-      <mat-label class="container col-xs-12" style="text-align: left;">KONTAKT:</mat-label>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="ihrName" matInput placeholder="Ihr Name"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="phone" matInput placeholder="Ihre Handynummer oder andere Kontaktmöglichkeit"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="address" matInput placeholder="Wenn notwendig, Ihre Adresse"></textarea>
-      </mat-form-field>
-    </form>
-  </div>
-  <div class="container row col-xs-12" style="text-align:center">
-    <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
-    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a> </mat-hint>
-  </div>
-  <div class="container row" *ngIf="downloadOkay">
-    <a [href]="fileUrl" download="response.pdf">Download Document</a>
-  </div>
+<mat-card>
+  <form [formGroup]="aushangForm">
+    <div class="row center-xs">
+      <div class="col-xs-12 row inputs-wrapper">
+        <mat-label class="col-xs-12 offset-bottom-50">Liebe Nachbarschaft, liebe Hausgemeinschaft,
+          sollten Sie zu einer der durch die derzeitige Pandemie (Coronavirus SARS CoV 2) betroffenen Risikogruppen
+          gehören (hohes Alter, Immunschwäche oder bestimmte Grunderkrankungen) möchte ich/möchten wir Sie unterstützen
+          gesund zu bleiben. <b>Gemeinsam schaffen wir das!</b></mat-label>
+        <mat-label class="col-xs-12 offset-bottom-20">WIR HELFEN MIT:</mat-label>
+        <mat-form-field class="col-xs-12 offset-bottom-50">
+          <mat-label> Womit können Sie helfen? Trennen Sie mit einem Komma. </mat-label>
+          <textarea class="eingabeFeld" formControlName="wirhelfen" matInput></textarea>
+        </mat-form-field>
+        <mat-label class="col-xs-12 offset-bottom-20">KONTAKT:</mat-label>
+        <mat-form-field class="col-xs-12">
+          <mat-label>Ihr Name</mat-label>
+          <input matInput class="eingabeFeld" formControlName="ihrName" matInput>
+        </mat-form-field>
+        <mat-form-field class="col-xs-12">
+          <mat-label>Ihre Handynummer oder andere Kontaktmöglichkeit</mat-label>
+          <textarea class="eingabeFeld" formControlName="phone" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field class="col-xs-12">
+          <mat-label>Wenn notwendig, Ihre Adresse</mat-label>
+          <textarea class="eingabeFeld" formControlName="address" matInput></textarea>
+        </mat-form-field>
+
+        <div class="row col-xs-12">
+          <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument
+              generieren</b></button>
+          <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund
+            zu
+            sein. Information zur <a
+              href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a>
+            und <a
+              href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a>
+          </mat-hint>
+        </div>
+        <div class="col-xs-12" *ngIf="downloadOkay">
+          <a [href]="fileUrl" download="response.pdf">Download Document</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
 </mat-card>
