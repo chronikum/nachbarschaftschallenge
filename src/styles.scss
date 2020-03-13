@@ -1,7 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .primary {
-  color: "#2A2BC9"
+  color: "#2A2BC9";
+}
+
+.title {
+  font-family: "Nothing You Could Do", cursive;
+  text-align: center;
+  font-size: 5vw;
+  margin: 4rem 0;
+}
+
+.offset-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.offset-bottom-50 {
+  margin-bottom: 50px;
+}
+
+.offset-top-20 {
+  margin-top: 20px;
+}
+
+.inputs-wrapper {
+  max-width: 700px;
 }
