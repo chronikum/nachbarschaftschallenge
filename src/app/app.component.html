@@ -4,26 +4,36 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-
-  <fa-icon class="example-icon" [icon]="faShare"></fa-icon>
 </mat-toolbar>
 <div>
-<mat-card>
-  <div class="container-fluid">
+<mat-card class="row">
+  <div class="container-fluid row">
+    <mat-label style="text-align:left">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen Aushang, den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br><a  target="_blank" color="primary" href="https://howtosurvivecorona.com/nachbarschaftschallenge-das-musst-du-beachten/">Das solltest du beachten</a></mat-label>
+    <br>
   </div>
-  <div class="example-container">
-    <form [formGroup]="options" class="container-fluid row" style="text-align:center">
-      <mat-label class="col-xs-12">Diese Seite soll Ihnen helfen, gegebenenfalls Unterstützung zu finden. Wenn Sie Unterstützung leisten wollen, klicken Sie hier:</mat-label>
-      <br>
-      <div class="col-xs-12" style="text-align:center">
-        <button mat-raised-button color="primary">Ich will helfen!</button>
-      </div>
-      <br>
-      <mat-label class="col-xs-12">Wenn Sie Hilfe und Unterstützung benötigen, klicken Sie hier.</mat-label>
-      <div class="col-xs-12" style="text-align:center">
-        <button mat-raised-button color="warn">Ich brauche Hilfe!</button>
-      </div>
+  <div class="container row">
+    <form class="col-xs-12 row" [formGroup]="aushangForm">
+      <mat-form-field class="col-xs-12">
+        <textarea class="eingabeFeld" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
+      </mat-form-field>
+      <mat-form-field class="col-xs-12">
+        <textarea class="eingabeFeld" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
+      </mat-form-field>
+      <mat-form-field class="col-xs-12">
+        <textarea class="eingabeFeld" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
+      </mat-form-field>
+      <mat-form-field class="col-xs-12">
+        <textarea class="eingabeFeld" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
+      </mat-form-field>
     </form>
   </div>
+  <div class="container row col-xs-12" style="text-align:center">
+    <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
+    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a> </mat-hint>
+  </div>
+<div class="container row" *ngIf="downloadOkay">
+  <a [href]="fileUrl" download="response.pdf">Download Document</a>
+</div>
 </mat-card>
+</div>
 </div>
