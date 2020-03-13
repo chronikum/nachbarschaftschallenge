@@ -5,6 +5,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';
 
+interface Kontaktdaten {
+  name: string;
+  phone: string;
+  address: string;
+}
+
+
 @Component({
   selector: 'app-template2-component',
   templateUrl: './template2-component.component.html',
@@ -19,6 +26,7 @@ export class Template2ComponentComponent implements OnInit {
   downloadOkay = false;
   aushangForm: FormGroup;
 
+
   /**
    * Init hook. Also workaround for faConfig Bug
    * @param fb FormBilder
@@ -27,10 +35,12 @@ export class Template2ComponentComponent implements OnInit {
    */
   constructor(fb: FormBuilder, private pdfApiService: PDFAPIService, private sanitizer: DomSanitizer) {
     this.aushangForm = fb.group({
-      intro: ['', [Validators.required]],
-      paragraph1: ['', [Validators.required]],
-      paragraph2: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      intro: [''],
+      wirhelfen: [''],
+      kontakt: [''],
+      paragraph2: [''],
+      ihrName: [''],
+      phone: [''],
     });
   }
 
@@ -75,7 +85,7 @@ export class Template2ComponentComponent implements OnInit {
           <strong>Gemeinsam schaffen wir das!</strong>
         `,
         "box1": {
-          "title": "WIR HELFEN:",
+          "title": "WIR HELFEN MIT:",
           "items": [
             "Einkäufe und Besorgungen erledigen",
             "Mit dem Hund gehen",
@@ -96,7 +106,7 @@ export class Template2ComponentComponent implements OnInit {
       },
       renderings: 1,
       delay: 250
-    })
+    }
 
     const requestOptions: RequestInit = {
       method: 'post',
