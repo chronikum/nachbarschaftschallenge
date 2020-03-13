@@ -50,12 +50,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Template1ComponentComponent } from './template1-component/template1-component.component';
+import { Template2ComponentComponent } from './template2-component/template2-component.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     Template1ComponentComponent,
+    Template2ComponentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
