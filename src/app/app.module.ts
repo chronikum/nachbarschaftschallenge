@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -104,7 +103,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatDialogModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    HttpClientModule,
   ],
   exports: [
     A11yModule,
