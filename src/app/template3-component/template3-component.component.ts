@@ -1,22 +1,49 @@
-import { Injectable } from '@angular/core';
+import { PDFAPIService } from './../service/pdf-api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';
 
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-template3-component',
+  templateUrl: './template3-component.component.html',
+  styleUrls: ['./template3-component.component.scss']
 })
-export class PDFAPIService {
+export class Template3ComponentComponent implements OnInit {
 
   name = 'response.pdf';
   fileUrl;
-
-  constructor(private sanitizer: DomSanitizer) { }
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+  downloadOkay = false;
+  aushangForm: FormGroup;
 
   /**
-   * Get PDF
+   * Init hook. Also workaround for faConfig Bug
+   * @param fb FormBilder
+   * @param pdfApiService pdfApiService
+   * @param sanitizer
+   */
+  constructor(fb: FormBuilder, private pdfApiService: PDFAPIService, private sanitizer: DomSanitizer) {
+    this.aushangForm = fb.group({
+      intro: ['', [Validators.required]],
+      paragraph1: ['', [Validators.required]],
+      paragraph2: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+    });
+  }
+
+  ngOnInit() {
+
+  }
+
+  /**
+   * Generate and serve download for pdf with following parameters
+   * @param intro Einleitung
+   * @param paragraph1 Was ich übernehmen kann:
+   * @param paragraph2 Wie man mich erreichen kann (Adresse und Co)
+   * @param name Name
    */
   async getPDF(intro: string, paragraph1: string, paragraph2: string, name: string) {
     const headers = new Headers();
@@ -87,9 +114,23 @@ export class PDFAPIService {
       body: JSON.stringify(body),
       redirect: 'follow'
     };
+
+    const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
+      .then(response => response.blob()).then(blob => this.saveAsBlob(blob))
+      .catch(error => console.log('error', error));
   }
 
+  /**
+   * Generiere eine PDF
+   */
+  generate() {
+    // tslint:disable-next-line: max-line-length
+    this.getPDF(this.aushangForm.get('intro').value, this.aushangForm.get('paragraph1').value, this.aushangForm.get('paragraph2').value, this.aushangForm.get('name').value);
+  }
 
+  async saveAsBlob(response: Blob) {
+    const blob = new Blob([response], { type: 'application/pdf' });
+    saveAs(blob, 'download.pdf');
+  }
 }
-
 

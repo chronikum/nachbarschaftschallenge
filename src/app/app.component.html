@@ -1,39 +1,33 @@
 <div>
-<mat-toolbar color="primary" class="container-fluid">
-  <span>Gemeinsam gegen die Panik!</span>
+  <div class="title">
+    #GegenDenVirus
+  </div>
+  <div style="text-align: center;">
+    <div class="offset-bottom-50 container-fluid">
+      <mat-label>Wähle ein Design:</mat-label>
+      <div style="text-align:center">
+        <b>
+          <mat-label style="text-align:center">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen
+            Aushang,
+            den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br>Information zur
+            <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit </a>und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a>
+          </mat-label>
+        </b>
+        <br>
+      </div>
+    </div>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
-</mat-toolbar>
-<div>
-<mat-card class="row">
-  <div class="container-fluid row">
-    <mat-label style="text-align:left">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen Aushang, den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br><a  target="_blank" color="primary" href="https://howtosurvivecorona.com/nachbarschaftschallenge-das-musst-du-beachten/">Das solltest du beachten</a></mat-label>
-    <br>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Einfaches Aushang-Design">
+        <div class="offset-top-20">
+          <app-template1-component></app-template1-component>
+        </div>
+      </mat-tab>
+      <mat-tab label="Aushang von soziale-arbeit.digital">
+        <div class="offset-top-20">
+          <app-template2-component></app-template2-component>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
-  <div class="container row">
-    <form class="col-xs-12 row" [formGroup]="aushangForm">
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
-      </mat-form-field>
-    </form>
-  </div>
-  <div class="container row col-xs-12" style="text-align:center">
-    <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
-    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a> </mat-hint>
-  </div>
-<div class="container row" *ngIf="downloadOkay">
-  <a [href]="fileUrl" download="response.pdf">Download Document</a>
-</div>
-</mat-card>
-</div>
 </div>
