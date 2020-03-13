@@ -40,6 +40,7 @@ export class Template2ComponentComponent implements OnInit {
       kontakt: [''],
       paragraph2: [''],
       ihrName: [''],
+      phone: [''],
       address: [''],
     });
   }
@@ -68,6 +69,7 @@ export class Template2ComponentComponent implements OnInit {
   async getPDF(intro: string, wirhelfen: string, paragraph2: string, ihrName: string, phone: string, address: string) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    const helfen = wirhelfen.split(",");
     const body = {
       template: {
         "type": "pdf",
@@ -96,23 +98,18 @@ export class Template2ComponentComponent implements OnInit {
         `,
         "box1": {
           "title": "WIR HELFEN MIT:",
-          "items": [
-            "Einkäufe und Besorgungen erledigen",
-            "Mit dem Hund gehen",
-            "Internetzugang bereitstellen",
-            "... und Weiteres: Sprechen Sie mich gerne an"
-          ]
+          "items": helfen
         },
         "box2": {
           "title": "KONTAKT:",
           "items": [
-            "Mein Name: Maurice Conrad",
-            "Telefonnummer: +49 176 74932702",
-            "Ich wohne im 2. Stock"
+            ihrName,
+            phone,
+            address,
           ]
         },
         "paragraph1": `<strong>Rufen Sie an</strong> oder hinterlassen Sie einen <strong>Zettel im Briefkasten.</strong>`,
-        "paragraph2": "Wir freuen uns, helfen zu können!<br>LG Maurice Conrad"
+        "paragraph2": "Wir freuen uns, helfen zu können!<br>LG " + ihrName
       },
       renderings: 1,
       delay: 250
