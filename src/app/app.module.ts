@@ -51,6 +51,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Template1ComponentComponent } from './template1-component/template1-component.component';
 import { Template2ComponentComponent } from './template2-component/template2-component.component';
+import { Template3ComponentComponent } from './template3-component/template3-component.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { Template2ComponentComponent } from './template2-component/template2-com
     AppComponent,
     Template1ComponentComponent,
     Template2ComponentComponent,
+    Template3ComponentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
