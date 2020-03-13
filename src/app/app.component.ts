@@ -1,7 +1,6 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { PDFAPIService } from './service/pdf-api.service';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';
@@ -15,12 +14,17 @@ import { saveAs } from 'file-saver';
 export class AppComponent {
   name = 'response.pdf';
   fileUrl;
-  faShare = faShareAlt;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
   downloadOkay = false;
   aushangForm: FormGroup;
 
+  /**
+   * Init hook. Also workaround for faConfig Bug
+   * @param fb FormBilder
+   * @param pdfApiService pdfApiService
+   * @param sanitizer
+   */
   constructor(fb: FormBuilder, private pdfApiService: PDFAPIService, private sanitizer: DomSanitizer) {
     this.aushangForm = fb.group({
       intro: ['', [Validators.required]],

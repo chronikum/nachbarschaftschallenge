@@ -4,8 +4,6 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-
-  <fa-icon class="example-icon" [icon]="faShare"></fa-icon>
 </mat-toolbar>
 <div>
 <mat-card class="row">
@@ -30,8 +28,8 @@
     </form>
   </div>
   <div class="container row col-xs-12" style="text-align:center">
-    <button class="col-xs-12" [disabled]="!this.aushangForm.valid" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
-    <mat-hint>Um den Aushang zu generieren, fülle bitte alle Felder aus!</mat-hint>
+    <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
+    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a> </mat-hint>
   </div>
 <div class="container row" *ngIf="downloadOkay">
   <a [href]="fileUrl" download="response.pdf">Download Document</a>
