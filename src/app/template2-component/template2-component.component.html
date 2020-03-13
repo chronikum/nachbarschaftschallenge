@@ -1,16 +1,13 @@
 <mat-card class="row">
-  <div class="container-fluid row">
-    <mat-label style="text-align:left">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen Aushang, den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br><a  target="_blank" color="primary" href="https://howtosurvivecorona.com/nachbarschaftschallenge-das-musst-du-beachten/">Das solltest du beachten</a></mat-label>
-    <br>
-  </div>
   <div class="container row">
     <form class="col-xs-12 row" [formGroup]="aushangForm">
+      <mat-label class="container col-xs-12" style="text-align: left;">Liebe Nachbarschaft, liebe Hausgemeinschaft,
+        sollten Sie zu einer der durch die derzeitige Pandemie (Coronavirus SARS CoV 2) betroffenen Risikogruppen gehören (hohes Alter, Immunschwäche oder bestimmte Grunderkrankungen) möchte ich/möchten wir Sie unterstützen gesund zu bleiben. <b>Gemeinsam schaffen wir das!</b></mat-label>
       <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="wirhelfen" matInput placeholder="WIR HELFEN MIT:"></textarea>
+        <mat-label class="container col-xs-12" style="text-align: left;">WIR HELFEN MIT:</mat-label>
+        <textarea class="eingabeFeld" formControlName="wirhelfen" matInput placeholder="Womit können Sie helfen? Trennen Sie mit einem Komma."></textarea>
       </mat-form-field>
-      <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
-      </mat-form-field>
+      <mat-label class="container col-xs-12" style="text-align: left;">KONTAKT:</mat-label>
       <mat-form-field class="col-xs-12">
         <textarea class="eingabeFeld" formControlName="ihrName" matInput placeholder="Ihr Name"></textarea>
       </mat-form-field>

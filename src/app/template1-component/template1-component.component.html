@@ -1,21 +1,23 @@
 <mat-card class="row">
-  <div class="container-fluid row">
-    <mat-label style="text-align:left">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen Aushang, den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br><a  target="_blank" color="primary" href="https://howtosurvivecorona.com/nachbarschaftschallenge-das-musst-du-beachten/">Das solltest du beachten</a></mat-label>
-    <br>
-  </div>
-  <div class="container row">
+  <div class="container row" style="text-align: center;">
+    <mat-divider></mat-divider>
     <form class="col-xs-12 row" [formGroup]="aushangForm">
+      <mat-label class="container col-xs-12">Liebe Nachbarn...</mat-label>
       <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
+        <textarea class="eingabeFeld" formControlName="intro" matInput placeholder="Stellen Sie sich vor."></textarea>
       </mat-form-field>
+      <mat-label class="container col-xs-12">Wir gehören nicht zur Risikogruppe von Corona und sind aktuell nicht erkrankt. Wir bieten deshalb gerne unsere tatkräftige Hilfe und Unterstützung an. Wir könnten z.B.einen Einkauf für euch erledigen, eine Fahrt übernehmen oder euch/Ihnen mit einem technischen Problem helfen, unsere Fahrräder ausleihen, wenn jemand aktuell auf die Öffentlichen verzichten möchte oder haben einfach ein Ohr, wenn ihr etwas Belastendes zu erzählen habt.</mat-label>
+      <mat-label class="container col-xs-12">Was ich übernehmen kann</mat-label>
       <mat-form-field class="col-xs-12">
         <textarea class="eingabeFeld" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
       </mat-form-field>
+      <mat-label class="container col-xs-12">Sie erreichen mich unter</mat-label>
       <mat-form-field class="col-xs-12">
         <textarea class="eingabeFeld" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
       </mat-form-field>
+      <mat-label class="col-xs-12">Grüße, </mat-label>
       <mat-form-field class="col-xs-12">
-        <textarea class="eingabeFeld" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
+        <textarea class="eingabeFeld" formControlName="name" matInput placeholder="Eure Namen"></textarea>
       </mat-form-field>
     </form>
   </div>
