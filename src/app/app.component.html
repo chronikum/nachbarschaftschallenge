@@ -8,28 +8,34 @@
   <fa-icon class="example-icon" [icon]="faShare"></fa-icon>
 </mat-toolbar>
 <div>
-<mat-card>
-  <div class="container-fluid">
+<mat-card class="row">
+  <div class="container-fluid row">
+    <mat-label style="text-align:left">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen Aushang, den Sie dann aufhängen können. Bitte beachten Sie folgende Hinweise, wenn Sie anderen Menschen helfen:<br><a  target="_blank" color="primary" href="https://howtosurvivecorona.com/nachbarschaftschallenge-das-musst-du-beachten/">Das solltest du beachten</a></mat-label>
+    <br>
+  </div>
+  <div class="container row">
     <form class="col-xs-12 row" [formGroup]="aushangForm">
       <mat-form-field class="col-xs-12">
-        <textarea class="answerField" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
+        <textarea class="eingabeFeld" formControlName="intro" matInput placeholder="Liebe Nachbarn... (fortführen)"></textarea>
       </mat-form-field>
       <mat-form-field class="col-xs-12">
-        <textarea class="answerField" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
+        <textarea class="eingabeFeld" formControlName="paragraph1" matInput placeholder="Was ich übernehmen kann:"></textarea>
       </mat-form-field>
       <mat-form-field class="col-xs-12">
-        <textarea class="answerField" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
+        <textarea class="eingabeFeld" formControlName="paragraph2" matInput placeholder="Wie Sie mich erreichen können:"></textarea>
       </mat-form-field>
       <mat-form-field class="col-xs-12">
-        <textarea class="answerField" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
+        <textarea class="eingabeFeld" formControlName="name" matInput placeholder="Dein/Eure Namen"></textarea>
       </mat-form-field>
     </form>
   </div>
-  <div class="container row">
-    <button mat-button (click)="generate()"><b>Aushangdokument generieren</b></button>
+  <div class="container row col-xs-12" style="text-align:center">
+    <button class="col-xs-12" [disabled]="!this.aushangForm.valid" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
+    <mat-hint>Um den Aushang zu generieren, fülle bitte alle Felder aus!</mat-hint>
   </div>
 <div class="container row" *ngIf="downloadOkay">
   <a [href]="fileUrl" download="response.pdf">Download Document</a>
 </div>
 </mat-card>
+</div>
 </div>
