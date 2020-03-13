@@ -40,8 +40,16 @@ export class Template2ComponentComponent implements OnInit {
       kontakt: [''],
       paragraph2: [''],
       ihrName: [''],
-      phone: [''],
+      address: [''],
     });
+  }
+
+  /**
+   * Generiere eine PDF
+   */
+  generate() {
+    // tslint:disable-next-line: max-line-length
+    this.getPDF(this.aushangForm.get('intro').value, this.aushangForm.get('wirhelfen').value, this.aushangForm.get('paragraph2').value, this.aushangForm.get('ihrName').value, this.aushangForm.get('phone').value, this.aushangForm.get('address').value);
   }
 
   ngOnInit() {
@@ -51,11 +59,13 @@ export class Template2ComponentComponent implements OnInit {
   /**
    * Generate and serve download for pdf with following parameters
    * @param intro Einleitung
-   * @param paragraph1 Was ich übernehmen kann:
+   * @param wirhelfen Was ich übernehmen kann:
    * @param paragraph2 Wie man mich erreichen kann (Adresse und Co)
-   * @param name Name
+   * @param ihrName Name
+   * @param phone Name
+   * @param address Name
    */
-  async getPDF(intro: string, paragraph1: string, paragraph2: string, name: string) {
+  async getPDF(intro: string, wirhelfen: string, paragraph2: string, ihrName: string, phone: string, address: string) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const body = {
@@ -119,14 +129,6 @@ export class Template2ComponentComponent implements OnInit {
     const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
       .then(response => response.blob()).then(blob => this.saveAsBlob(blob))
       .catch(error => console.log('error', error));
-  }
-
-  /**
-   * Generiere eine PDF
-   */
-  generate() {
-    // tslint:disable-next-line: max-line-length
-    this.getPDF(this.aushangForm.get('intro').value, this.aushangForm.get('paragraph1').value, this.aushangForm.get('paragraph2').value, this.aushangForm.get('name').value);
   }
 
   async saveAsBlob(response: Blob) {
