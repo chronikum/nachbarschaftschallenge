@@ -49,63 +49,54 @@ export class Template2ComponentComponent implements OnInit {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const body = {
-      "template": {
+      template: {
         "type": "pdf",
-        "documents": [{
-          "width": 2480,
-          "height": 3508,
-          "type": "html",
-          "src": "data/templates/corona/doc.html",
-          "alias": "Document"
-        }],
+        "documents": [
+          {
+            "width": 2480,
+            "height": 3508,
+            "type": "html",
+            "src": "data/templates/corona2/doc.html",
+            "alias": "Document"
+          }
+        ],
         "fonts": [],
-        "fields": [{
-          "type": "Line",
-          "description": "Intro",
-          "key": "intro",
-          "default": "nicht alle von euch kennen wir: manche flüchtig aus Treppenhausbegegnungen, andere durch kurze Gespräche zwischen Tür und Angel. So nehmen einige von euch öfter unsere Pakete an, sorgen dafür, dass es im Treppenhaus jetzt besser riecht oder ersetzen alte Leuchten durch LEDs. Alles praktische Nachbarschaftshilfe, für die wir sehr dankbar sind und nicht immer im Alltag unseren Dank zum Ausdruck bringen! Vielleicht haben wir uns auch schon mal über einander aufgeregt, weil ihr auf unserem Parkplatz standet oder umgekehrt – Zusammenleben in einem Mietshaus bringt sicher auch das mit sich.",
-          "properties": {}
-        },
-        {
-          "type": "Line",
-          "description": "Paragraph 1",
-          "key": "paragraph1",
-          "default": "In dieser aktuell merkwürdigen und dichten Zeit mit einem neuartigen Virus, der auf vielen verschiedenen Ebenen Chaos verursacht, setzen wir auf SOLIDARITÄT und haben uns überlegt, was das für uns praktisch bedeutet:",
-          "properties": {}
-        },
-        {
-          "type": "Line",
-          "description": "Explanation",
-          "key": "explanation",
-          "default": "Wir gehören nicht zur Risikogruppe von Corona und sind aktuell nicht erkrankt. Wir bieten deshalb gerne unsere tatkräftige Hilfe und Unterstützung an. Wir könnten z.B.einen Einkauf für euch erledigen, eine Fahrt übernehmen oder euch/Ihnen mit einem technischen Problem helfen, unsere Fahrräder ausleihen, wenn jemand aktuell auf die Öffentlichen verzichten möchte oder haben einfach ein Ohr, wenn ihr etwas Belastendes zu erzählen habt.",
-          "properties": {}
-        },
-        {
-          "type": "Line",
-          "description": "Paragraph 2",
-          "key": "paragraph2",
-          "default": "Ich wohne im 3. Stock und arbeite tagsüber. Meistens bin ich ab 16 Uhr zu Hause. Gerne einfach klingen oder mich anrufen: <strong>0176 749 32702</strong>",
-          "properties": {}
-        },
-        {
-          "type": "Line",
-          "description": "Name",
-          "key": "name",
-          "default": "Familie Yilmaz",
-          "properties": {}
-        }
-        ]
+        "fields": []
       },
-      "doc": 0,
-      "data": {
-        "intro": intro,
-        "paragraph1": paragraph1,
-        "paragraph2": paragraph2,
-        "name": name
+      doc: 0,
+      data: {
+        "intro": `
+          Liebe Nachbarschaft,
+          <br>
+          liebe Hausgemeinschaft,
+          <br><br>
+          sollten Sie zu einer der durch die derzeitige Pandemie (Coronavirus SARS CoV 2) betroffenen <strong>Risikogruppen</strong> gehören
+          (hohes Alter, Immunschwäche oder bestimmte Grunderkrankungen) möchte ich/möchten wir Sie <u>unterstützen gesund zu bleiben.</u>
+          <strong>Gemeinsam schaffen wir das!</strong>
+        `,
+        "box1": {
+          "title": "WIR HELFEN:",
+          "items": [
+            "Einkäufe und Besorgungen erledigen",
+            "Mit dem Hund gehen",
+            "Internetzugang bereitstellen",
+            "... und Weiteres: Sprechen Sie mich gerne an"
+          ]
+        },
+        "box2": {
+          "title": "KONTAKT:",
+          "items": [
+            "Mein Name: Maurice Conrad",
+            "Telefonnummer: +49 176 74932702",
+            "Ich wohne im 2. Stock"
+          ]
+        },
+        "paragraph1": `<strong>Rufen Sie an</strong> oder hinterlassen Sie einen <strong>Zettel im Briefkasten.</strong>`,
+        "paragraph2": "Wir freuen uns, helfen zu können!<br>LG Maurice Conrad"
       },
-      "renderings": 1,
-      "delay": 250
-    };
+      renderings: 1,
+      delay: 250
+    })
 
     const requestOptions: RequestInit = {
       method: 'post',
