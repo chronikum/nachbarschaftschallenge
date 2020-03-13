@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { saveAs } from 'file-saver';
 
 @Injectable({
   providedIn: 'root'
@@ -84,18 +87,9 @@ export class PDFAPIService {
       body: JSON.stringify(body),
       redirect: 'follow'
     };
-
-    const response = await fetch('https://gegen-den-virus.de:8080/emulate/pdf', requestOptions)
-      .then(response => response.blob()).then(blob => this.saveAsBlob(blob))
-      .catch(error => console.log('error', error));
   }
 
-  async saveAsBlob(responseData: Response) {
-    const data = 'some text';
-    const blob = new Blob([data], { type: 'application/octet-stream' });
 
-    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-  }
 }
 
 
