@@ -1,7 +1,7 @@
 <mat-card>
   <form [formGroup]="aushangForm">
-    <div class="row center-xs">
-      <div class="col-xs-12 row inputs-wrapper">
+    <article class="row center-xs">
+      <section class="col-xs-12 row inputs-wrapper">
         <mat-label class="col-xs-12 offset-bottom-50">Liebe Nachbarschaft, liebe Hausgemeinschaft,
           sollten Sie zu einer der durch die derzeitige Pandemie (Coronavirus SARS CoV 2) betroffenen Risikogruppen
           gehören (hohes Alter, Immunschwäche oder bestimmte Grunderkrankungen) möchte ich/möchten wir Sie unterstützen
@@ -25,7 +25,7 @@
           <textarea class="eingabeFeld" formControlName="address" matInput></textarea>
         </mat-form-field>
 
-        <div class="row col-xs-12">
+        <section class="row col-xs-12">
           <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument
               generieren</b></button>
           <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund
@@ -35,12 +35,12 @@
             und <a
               href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a>
           </mat-hint>
-        </div>
-        <div class="col-xs-12" *ngIf="downloadOkay">
+        </section>
+        <section class="col-xs-12" *ngIf="downloadOkay">
           <a [href]="fileUrl" download="response.pdf">Download Document</a>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </article>
   </form>
 
 </mat-card>

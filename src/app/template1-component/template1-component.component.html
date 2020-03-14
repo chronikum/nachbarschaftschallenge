@@ -1,8 +1,8 @@
 <mat-card>
-  <div>
+  <article>
     <form [formGroup]="aushangForm">
-      <div class="row center-xs">
-        <div class="col-xs-12 row inputs-wrapper">
+      <section class="row center-xs">
+        <section class="col-xs-12 row inputs-wrapper">
           <mat-label class="col-xs-12">Liebe Nachbarn...</mat-label>
           <mat-form-field class="col-xs-12 offset-bottom-50">
             <mat-label>Stellen Sie sich vor</mat-label>
@@ -33,7 +33,7 @@
             <textarea class="eingabeFeld" formControlName="name" matInput required></textarea>
           </mat-form-field>
 
-          <div class="row col-xs-12" style="text-align:center">
+          <section class="row col-xs-12" style="text-align:center">
             <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument
                 generieren</b></button>
             <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund
@@ -43,15 +43,15 @@
               und <a
                 href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a>
             </mat-hint>
-          </div>
-          <div class="row col-xs-12" *ngIf="downloadOkay">
+          </section>
+          <section class="row col-xs-12" *ngIf="downloadOkay">
             <a [href]="fileUrl" download="response.pdf">Download Document</a>
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </section>
 
 
     </form>
-  </div>
+  </article>
 
 </mat-card>
