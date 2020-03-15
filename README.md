@@ -1,8 +1,16 @@
 # Nachbarschaftschallenge
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
 ## Development server
+
 Run `npm install` to install dependencies.
+
+Requirements for `ng`:
+
+- A relatively up-to-date node/npm (e.g. run `nvm install-latest-npm; nvm install --lts; nvm use 12.16.1`)
+- Angular CLI (e.g. run `npm install -g @angular/cli@latest`)
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
