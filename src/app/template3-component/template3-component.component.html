@@ -21,7 +21,7 @@
   </div>
   <div class="container row col-xs-12" style="text-align:center">
     <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument generieren</b></button>
-    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a> </mat-hint>
+    <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund zu sein. Information zur <a href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html" target="_blank">Eigensicherheit</a> und <a href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf" target="_blank">Hygienemaßnahmen</a> </mat-hint>
   </div>
   <div class="container row" *ngIf="downloadOkay">
     <a [href]="fileUrl" download="response.pdf">Download Document</a>
