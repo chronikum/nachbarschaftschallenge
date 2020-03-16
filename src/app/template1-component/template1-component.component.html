@@ -3,45 +3,33 @@
     <form [formGroup]="aushangForm">
       <div class="row center-xs">
         <div class="col-xs-12 row inputs-wrapper">
-          <mat-label class="col-xs-12">Liebe Nachbarn...</mat-label>
+          <mat-label class="col-xs-12">{{'simpleNotice.heading' | translate}}</mat-label>
           <mat-form-field class="col-xs-12 offset-bottom-50">
             <mat-label>Stellen Sie sich vor</mat-label>
             <textarea class="eingabeFeld" formControlName="intro" matInput required></textarea>
           </mat-form-field>
-          <mat-label class="col-xs-12 offset-bottom-50">Wir gehören nicht zur Risikogruppe von Corona und sind
-            aktuell nicht
-            erkrankt. Wir bieten deshalb gerne unsere tatkräftige Hilfe und Unterstützung an. Wir könnten z.B.einen
-            Einkauf
-            für euch erledigen, eine Fahrt übernehmen oder euch/Ihnen mit einem technischen Problem helfen, unsere
-            Fahrräder
-            ausleihen, wenn jemand aktuell auf die Öffentlichen verzichten möchte oder haben einfach ein Ohr, wenn ihr
-            etwas
-            Belastendes zu erzählen habt.</mat-label>
-          <mat-label class="col-xs-12">Was ich übernehmen kann</mat-label>
+          <mat-label class="col-xs-12 offset-bottom-50">{{ 'simpleNotice.description' | translate }}</mat-label>
+          <mat-label class="col-xs-12">{{ 'simpleNotice.offeredHelp' | translate }}</mat-label>
           <mat-form-field class="col-xs-12 offset-bottom-50">
-            <mat-label> Was ich übernehmen kann </mat-label>
+            <mat-label>{{ 'simpleNotice.placeholder.offeredHelp' | translate }} </mat-label>
             <textarea class="eingabeFeld" formControlName="paragraph1" matInput required></textarea>
           </mat-form-field>
-          <mat-label class="col-xs-12">Sie erreichen mich unter</mat-label>
+          <mat-label class="col-xs-12">{{ 'simpleNotice.contact' | translate }}</mat-label>
           <mat-form-field class="col-xs-12 offset-bottom-50">
-            <mat-label>Wie Sie mich erreichen können:</mat-label>
+            <mat-label>{{ 'simpleNotice.placeholder.contact' | translate }}</mat-label>
             <textarea class="eingabeFeld" formControlName="paragraph2" matInput required></textarea>
           </mat-form-field>
-          <mat-label class="col-xs-12">Grüße, </mat-label>
+          <mat-label class="col-xs-12">{{ 'simpleNotice.regards' | translate }} </mat-label>
           <mat-form-field class="col-xs-12">
-            <mat-label> Eure Namen</mat-label>
+            <mat-label> {{ 'simpleNotice.placeholder.name' | translate }}</mat-label>
             <textarea class="eingabeFeld" formControlName="name" matInput required></textarea>
           </mat-form-field>
 
           <div class="row col-xs-12" style="text-align:center">
-            <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>Aushangdokument
-                generieren</b></button>
-            <mat-hint>Wir weisen wiederholt darauf hin, dass es wichtig ist, im Kontakt mit Risikogruppen, selbst gesund
-              zu
-              sein. Information zur <a
-                href="https://www.infektionsschutz.de/coronavirus-sars-cov-2.html">Eigensicherheit</a>
-              und <a
-                href="https://www.infektionsschutz.de/fileadmin/infektionsschutz.de/Downloads/200309_BZgA_Atemwegsinfektion-Hygiene_schuetzt_3x_01_DE.pdf">Hygienemaßnahmen</a>
+            <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>
+                {{'general.generateNotice' | translate}}
+              </b></button>
+            <mat-hint [innerHtml]="'general.pleaseNoteFurther' | translate">
             </mat-hint>
           </div>
           <div class="row col-xs-12" *ngIf="downloadOkay">
