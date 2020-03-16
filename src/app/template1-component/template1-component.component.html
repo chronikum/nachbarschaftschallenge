@@ -1,9 +1,9 @@
 <mat-card>
-  <div>
+  <article>
     <form [formGroup]="aushangForm">
-      <div class="row center-xs">
-        <div class="col-xs-12 row inputs-wrapper">
-          <mat-label class="col-xs-12">{{'simpleNotice.heading' | translate}}</mat-label>
+      <section class="row center-xs">
+        <section class="col-xs-12 row inputs-wrapper">
+          <mat-label class="col-xs-12">>{{'simpleNotice.heading' | translate}}</mat-label>
           <mat-form-field class="col-xs-12 offset-bottom-50">
             <mat-label>Stellen Sie sich vor</mat-label>
             <textarea class="eingabeFeld" formControlName="intro" matInput required></textarea>
@@ -25,21 +25,19 @@
             <textarea class="eingabeFeld" formControlName="name" matInput required></textarea>
           </mat-form-field>
 
-          <div class="row col-xs-12" style="text-align:center">
+          <section class="row col-xs-12" style="text-align:center">
             <button class="col-xs-12" mat-raised-button (click)="generate()" color="primary"><b>
                 {{'general.generateNotice' | translate}}
               </b></button>
             <mat-hint [innerHtml]="'general.pleaseNoteFurther' | translate">
             </mat-hint>
-          </div>
-          <div class="row col-xs-12" *ngIf="downloadOkay">
+          </section>
+          <section class="row col-xs-12" *ngIf="downloadOkay">
             <a [href]="fileUrl" download="response.pdf">Download Document</a>
-          </div>
-        </div>
-      </div>
-
-
+          </section>
+        </section>
+      </section>
     </form>
-  </div>
+  </article>
 
 </mat-card>

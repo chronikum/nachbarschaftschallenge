@@ -1,7 +1,7 @@
 <mat-card>
   <form [formGroup]="aushangForm">
-    <div class="row center-xs">
-      <div class="col-xs-12 row inputs-wrapper">
+    <article class="row center-xs">
+      <section class="col-xs-12 row inputs-wrapper">
         <mat-label class="col-xs-12 offset-bottom-50" [innerHtml]="'sozialeArbeit.heading' | translate"></mat-label>
         <mat-label class="col-xs-12 offset-bottom-20">{{'sozialeArbeit.weHelp' | translate}}</mat-label>
         <mat-form-field class="col-xs-12 offset-bottom-50">
@@ -22,17 +22,17 @@
           <textarea class="eingabeFeld" formControlName="address" matInput></textarea>
         </mat-form-field>
 
-        <div class="row col-xs-12">
+        <section class="row col-xs-12">
           <button class="col-xs-12" mat-raised-button (click)="generate()"
             color="primary"><b>{{'general.generateNotice' | translate}}</b></button>
           <mat-hint [innerHtml]="'general.pleaseNoteFurther' | translate">
           </mat-hint>
-        </div>
-        <div class="col-xs-12" *ngIf="downloadOkay">
+        </section>
+        <section class="col-xs-12" *ngIf="downloadOkay">
           <a [href]="fileUrl" download="response.pdf">Download Document</a>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </article>
   </form>
 
 </mat-card>

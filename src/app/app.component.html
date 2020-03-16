@@ -1,30 +1,30 @@
-<div>
-  <div class="title">
+<main>
+  <header class="title">
     #GegenDenVirus
-  </div>
-  <div style="text-align: center;">
-    <div class="offset-bottom-50 container-fluid">
-      <mat-label> {{'general.chooseDesign' | translate}}</mat-label>
-      <div style="text-align:center">
+  </header>
+  <article style="text-align: center;">
+    <section class="offset-bottom-50 container-fluid">
+      <mat-label>{{'general.chooseDesign' | translate}}</mat-label>
+      <section style="text-align:center">
         <b>
           <mat-label style="text-align:center" [innerHtml]="'general.pleaseNote' | translate">
           </mat-label>
         </b>
         <br>
-      </div>
-    </div>
+      </section>
+    </section>
 
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="{{'simpleNotice.title' | translate}}">
-        <div class="offset-top-20">
+        <section class="offset-top-20">
           <app-template1-component></app-template1-component>
-        </div>
+        </section>
       </mat-tab>
       <mat-tab label="{{'sozialeArbeit.title' | translate}}">
-        <div class=" offset-top-20">
+        <section class="offset-top-20">
           <app-template2-component></app-template2-component>
-        </div>
+        </section>
       </mat-tab>
     </mat-tab-group>
-  </div>
-</div>
+  </article>
+</main>
