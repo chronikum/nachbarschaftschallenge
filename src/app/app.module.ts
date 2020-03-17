@@ -52,6 +52,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Template1ComponentComponent } from './template1-component/template1-component.component';
 import { Template2ComponentComponent } from './template2-component/template2-component.component';
 import { Template3ComponentComponent } from './template3-component/template3-component.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -63,6 +66,14 @@ import { Template3ComponentComponent } from './template3-component/template3-com
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: localLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     NoopAnimationsModule,
     A11yModule,
     CdkStepperModule,
@@ -158,3 +169,8 @@ import { Template3ComponentComponent } from './template3-component/template3-com
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+
+
+export function localLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json')
+}
