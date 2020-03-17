@@ -1,10 +1,9 @@
 <main>
   <header class="title">
-    #GegenDenVirus
+    <img class="logo-header" [src]="'./assets/images/logo.png'">
   </header>
   <article style="text-align: center;">
     <section class="offset-bottom-50 container-fluid">
-      <mat-label>Wähle ein Design:</mat-label>
       <section style="text-align:center">
         <b>
           <mat-label style="text-align:center">Toll, dass Sie die Aktion unterstützen! Generieren Sie hier einen
@@ -16,16 +15,17 @@
         <br>
       </section>
     </section>
+    <mat-label>Wähle ein Design:</mat-label>
 
     <mat-tab-group mat-align-tabs="center">
-      <mat-tab label="Einfaches Aushang-Design">
-        <section class="offset-top-20">
-          <app-template1-component></app-template1-component>
-        </section>
-      </mat-tab>
       <mat-tab label="Aushang von soziale-arbeit.digital">
         <section class="offset-top-20">
           <app-template2-component></app-template2-component>
+        </section>
+      </mat-tab>
+      <mat-tab label="Einfaches Aushang-Design">
+        <section class="offset-top-20">
+          <app-template1-component></app-template1-component>
         </section>
       </mat-tab>
     </mat-tab-group>
